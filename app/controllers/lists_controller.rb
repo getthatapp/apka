@@ -6,7 +6,6 @@ class ListsController < ApplicationController
 	end
 
 	def create
-		# binding.pry
 		@board = Board.find(params[:board_id])
 		@list = @board.lists.new(list_params)
 		if @list.save
