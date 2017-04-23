@@ -1,0 +1,20 @@
+<h1>Board Show: <%= @board.id %></h1>
+
+<%= link_to "Add new list", new_board_list_path(@board) %>
+
+<table>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Title</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @board.lists.each do |list| %>
+			<tr>
+				<td><%= list.id %></td>
+				<td><%= list.title %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
