@@ -1,0 +1,5 @@
+<%= form_for [@board, @list] do |f| %>
+  <%= render 'shared/errors_messages', obj: @list %>
+  <%= f.text_field :title %>
+  <%= f.submit %>
+<% end %>

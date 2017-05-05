@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-	resources :boards do
-		resources :lists, only: [:new, :create]
+
+	shallow do
+    resources :boards
+		resources :lists
+    resources :tasks
+
 	end
 
 	root 'boards#index'

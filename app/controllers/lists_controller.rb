@@ -1,8 +1,24 @@
 class ListsController < ApplicationController
+
+  def index
+    @lists = List.all
+  end
+
+  def new
+    board
+    @list = @board.lists.new
+  end
+
+  def show
+    # list
+  end
+
+
   def new
     @board = Board.find(params[:board_id])
     @list = @board.lists.new
   end
+
 
   def create
     @list = board.lists.new(list_params)
@@ -22,5 +38,12 @@ class ListsController < ApplicationController
   def board
    @board ||= Board.find(params[:board_id])
   end
+
+
+  def list
+    @list ||= List.find(params[:list_id])
+  end
+
+
 
 end
