@@ -1,8 +1,8 @@
 class ListsController < ApplicationController
 
-  def index
-    @lists = List.all
-  end
+  # def index
+  #   @lists = List.all
+  # end
 
   def new
     board
@@ -10,23 +10,33 @@ class ListsController < ApplicationController
   end
 
   def show
-    # list
+    list
   end
-
-
-  def new
-    @board = Board.find(params[:board_id])
-    @list = @board.lists.new
-  end
-
 
   def create
     @list = board.lists.new(list_params)
-    if @list.save
-      redirect_to board_path(@board)
+    if list.save
+      redirect_to board_list_path(board, list)
     else
       render :new
     end
+  end
+
+  def edit
+    list
+  end
+
+  def update
+    if list.update(list_params)
+      redirect_to board_list_path, notice: 'List updated'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    list.destroy
+    redirect_to boards_path
   end
 
   private
@@ -36,14 +46,11 @@ class ListsController < ApplicationController
   end
 
   def board
-   @board ||= Board.find(params[:board_id])
+   @board ||= Board.find(params[:id])
   end
-
 
   def list
-    @list ||= List.find(params[:list_id])
+    @list ||= board.lists.find(params[:board_id])
   end
-
-
 
 end
