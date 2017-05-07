@@ -26,7 +26,7 @@ class BoardsController < ApplicationController
 
   def update
     if board.update(board_params)
-      redirect_to board, notice: 'Board updated'
+      redirect_to board_path(board), notice: 'Board updated'
     else
       render :edit
     end

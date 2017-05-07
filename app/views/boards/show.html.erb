@@ -1,4 +1,4 @@
-<h1>Board Show: <%= @board.id %></h1>
+<h1>Board: <%= @board.title %></h1>
 
 <%= link_to "Add new list", new_board_list_path(@board) %>
 
@@ -7,13 +7,16 @@
     <tr>
       <th>Id</th>
       <th>Title</th>
-    </tr>
-  </thead>
+      <th colspan="3">Actions</th>
+    </tr>  </thead>
   <tbody>
     <% @board.lists.each do |list| %>
       <tr>
         <td><%= list.id %></td>
         <td><%= list.title %></td>
+        <td><%= link_to "Show", board_list_path(@board, list) %></td>
+        <td><%= link_to "Edit", edit_board_list_path(@board, list) %></td>
+        <td><%= link_to "Delete", board_list_path(@board, list), method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>
     <% end %>
   </tbody>
