@@ -10,7 +10,7 @@ class ListsController < ApplicationController
   def create
     @list = board.lists.new(list_params)
     if @list.save
-      redirect_to board_list_path(@board, @list)
+      redirect_to board_list_path(board, @list)
     else
       render :new
     end
@@ -23,7 +23,7 @@ class ListsController < ApplicationController
 
   def update
     if list.update(list_params)
-      redirect_to board_path(board, list), notice: 'List updated'
+      redirect_to board_path(board, @list), notice: 'List updated'
     else
       render :edit
     end
@@ -41,10 +41,10 @@ class ListsController < ApplicationController
   end
 
   def board
-   @board = Board.find(params[:board_id])
+   @board ||= Board.find(params[:board_id])
   end
 
   def list
-    @list = board.lists.find(params[:id])
+    @list ||= board.lists.find(params[:id])
   end
 end
