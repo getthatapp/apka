@@ -17,7 +17,6 @@ class ListsController < ApplicationController
   end
 
   def edit
-    # board
     list
   end
 
