@@ -6,16 +6,20 @@ class TasksController < ApplicationController
   def create
     @task = list.tasks.new(task_params)
     if @task.save
-      redirect_to list_path(list, @task)
+      redirect_to list_task_path(list, @task)
     else
       render :new
     end
   end  
 
+  def show
+    task
+  end
+
   private
 
   def task_params
-    params.require(:task)permit(:title)
+    params.require(:task).permit(:title)
   end
 
   def list
