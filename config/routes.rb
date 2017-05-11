@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :lists, only: [] do
-    resources :tasks, only: [:new, :create, :show]
+    resources :tasks, only: [:new, :create, :edit, :update, :destroy]
   end
 
 	root 'boards#index'
