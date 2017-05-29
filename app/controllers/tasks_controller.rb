@@ -12,11 +12,6 @@ class TasksController < ApplicationController
     end
   end  
 
-  def complete
-    task.update_attribute(:completed, true)
-    redirect_to list_task_path(list, @task)
-  end
-
   private
 
   def task_params
