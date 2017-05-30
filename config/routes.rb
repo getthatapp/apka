@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     resources :tasks, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  resources :users, only: [:show, :new]
+  resources :registrations, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
     
 	root 'boards#index'
 end

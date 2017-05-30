@@ -1,0 +1,14 @@
+<h1>Sign Up</h1>
+
+<%= form_tag registrations_path, method: :post do %>
+  <%= label_tag :name, 'Name:' %>
+  <%= text_field_tag :name %>
+  <br>
+  <%= label_tag :email, 'Email:' %>
+  <%= email_field_tag :email %>
+  <br>
+  <%= label_tag :password, 'Password:' %>
+  <%= password_field_tag :password %>
+  <br>
+  <%= submit_tag 'Sign up' %>
+<% end %>
