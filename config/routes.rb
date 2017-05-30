@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :lists, only: [] do
     resources :tasks, only: [:new, :create, :edit, :update, :destroy]
   end
+
+  resources :users, only: [:show, :new]
     
 	root 'boards#index'
 end

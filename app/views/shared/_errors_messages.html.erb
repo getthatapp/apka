@@ -1,7 +1,6 @@
-<% if obj.errors.present? %>
-  <ul>
-    <% obj.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
+<% if notice.present? %>
+  <p>NOTICE: <%= notice %></p>
+<% end %>
+<% if alert.present? %>
+  <p>Alert: <%= alert %></p>
 <% end %>
