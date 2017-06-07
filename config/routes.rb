@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :boards do
-		resources :lists, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :lists, only: [:new, :create, :show, :edit, :update, :destroy]
   end
 
   resources :lists, only: [] do
@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   resources :registrations, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
-    
-	root 'boards#index'
-  
+
+  root 'boards#index'
 end
