@@ -1,6 +1,7 @@
 <h1>Sign Up</h1>
 
 <%= form_for @user, url: registrations_path do |f| %>
+  <%= render 'shared/errors', obj: @user %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br>
