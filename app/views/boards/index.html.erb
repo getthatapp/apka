@@ -1,5 +1,6 @@
-<h1>Your boards</h1>
+<% if current_user %>
 
+<h1>Your boards</h1>
 <%= link_to "New board", new_board_path %>
 
 <table>
@@ -12,6 +13,7 @@
   </thead>
   <tbody>
     <% @boards.each do |board| %>
+    <% if board.owner == current_user %>
       <tr>
         <td><%= board.id %></td>
         <td><%= board.title %></td>
@@ -19,6 +21,8 @@
         <td><%= link_to "Edit", edit_board_path(board) %></td>
         <td><%= link_to "Delete", board_path(board), method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>
+      <% end  %>
     <% end %>
   </tbody>
 </table>
+<% end %>
