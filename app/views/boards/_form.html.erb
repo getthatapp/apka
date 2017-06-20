@@ -1,5 +1,9 @@
-<%= form_for @board do |f| %>
-  <%= render 'shared/errors', obj: @board %>
-  <%= f.text_field :title %>
-  <%= f.submit %>
-<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @board do |f| %>
+      <%= render 'shared/errors', obj: @board %>
+      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

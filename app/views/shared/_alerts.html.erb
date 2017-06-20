@@ -1,6 +1,3 @@
-<% if notice.present? %>
-  <p>NOTICE: <%= notice %></p>
-<% end %>
-<% if alert.present? %>
-  <p>Alert: <%= alert %></p>
-<% end %>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>

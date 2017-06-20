@@ -6,11 +6,23 @@ class TasksController < ApplicationController
   def create
     @task = list.tasks.new(task_params)
     if @task.save
-      redirect_to list_task_path(list, @task)
+      redirect_to board_list_path(list.board, list), success: "Task created"
     else
       render :new
     end
-  end  
+  end 
+
+  def edit
+    task
+  end
+
+  def update
+    if task.update(task_params)
+      redirect_to board_list_path(list.board, list), info: "Task updated"
+    else
+      render :new
+    end
+  end
 
   private
 

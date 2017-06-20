@@ -1,9 +1,9 @@
 <% if current_user %>
 
 <h1>Your boards</h1>
-<%= link_to "New board", new_board_path %>
+<%= link_to "New board", new_board_path, class: 'btn btn-primary' %>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Id</th>
@@ -17,9 +17,9 @@
       <tr>
         <td><%= board.id %></td>
         <td><%= board.title %></td>
-        <td><%= link_to "Show", board_path(board) %></td>
-        <td><%= link_to "Edit", edit_board_path(board) %></td>
-        <td><%= link_to "Delete", board_path(board), method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= link_to "Show", board_path(board), class: 'btn btn-sm btn-default' %></td>
+        <td><%= link_to "Edit", edit_board_path(board), class: 'btn btn-sm btn-info' %></td>
+        <td><%= link_to "Delete", board_path(board), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>
       <% end  %>
     <% end %>

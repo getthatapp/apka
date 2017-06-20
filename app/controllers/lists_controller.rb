@@ -10,7 +10,7 @@ class ListsController < ApplicationController
   def create
     @list = board.lists.new(list_params)
     if @list.save
-      redirect_to board_list_path(board, @list)
+      redirect_to board_list_path(board, @list), success: "List created"
     else
       render :new
     end
@@ -22,7 +22,8 @@ class ListsController < ApplicationController
 
   def update
     if list.update(list_params)
-      redirect_to board_path(board, list), notice: 'List updated'
+    redirect_to board_path(board, list), info: "List updated"
+
     else
       render :edit
     end
@@ -30,7 +31,8 @@ class ListsController < ApplicationController
 
   def destroy
     list.destroy
-    redirect_to boards_path
+    redirect_to boards_path, danger: "List deleted"
+
   end
 
   private

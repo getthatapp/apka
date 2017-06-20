@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :lists, only: [] do
-    resources :tasks, only: [:new, :create, :edit, :update, :destroy]
+    resources :tasks, only: [:new, :show, :create, :edit, :update, :destroy]
   end
 
   resources :registrations, only: [:new, :create]

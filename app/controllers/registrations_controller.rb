@@ -7,7 +7,7 @@ class RegistrationsController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path, notice: "Signed up!!"
+      redirect_to new_session_path, success: "Successfully signed up please log in!"
     else
       render :new
     end
