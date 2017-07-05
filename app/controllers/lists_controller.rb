@@ -4,7 +4,8 @@ class ListsController < ApplicationController
   end
 
   def show
-    list
+    @archived =  params[:archived].present?
+    @tasks = list.tasks.where(archived: @archived)
   end
 
   def create
@@ -32,7 +33,6 @@ class ListsController < ApplicationController
   def destroy
     list.destroy
     redirect_to boards_path, danger: "List deleted"
-
   end
 
   private
@@ -42,7 +42,7 @@ class ListsController < ApplicationController
   end
 
   def board
-   @board ||= Board.find(params[:board_id])
+    @board ||= Board.find(params[:board_id])
   end
 
   def list

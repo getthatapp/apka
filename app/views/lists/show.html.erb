@@ -1,5 +1,11 @@
 <h1>List: <%= @list.title %></h1>
-<%=link_to "Add new task", new_list_task_path(@list), class: 'btn btn-sm btn-primary' %>
+
+<%= link_to "Add new task", new_list_task_path(@list), class: 'btn btn-sm btn-primary' %>
+<% if @archived.present? %> 
+  <%= link_to "Back to tasks", board_list_path(@board, @list) %>
+<% else %>
+  <%= link_to "Archived tasks", board_list_path(@board, @list, archived: true) %>
+<% end %>
 <table class="table">
   <thead>
     <tr>
@@ -8,10 +14,11 @@
     </tr>  
   </thead>
   <tbody>
-    <% @list.tasks.each do |task| %>
+    <% @tasks.each do |task| %>
       <tr>
         <td><%= task.title %></td>
         <td><%= link_to "Edit", edit_list_task_path(@list, task), class: 'btn btn-xs btn-info' %></td>
+        <td><%= link_to "Add to archive", list_archive_task_path(@list, task), class: 'btn btn-xs btn-info', method: :put %></td>
       </tr>
     <% end %>
   </tbody>
